@@ -44,6 +44,7 @@ Instructions for the outputs :
 1. Collect Data:
    
       1) I acquired the data in YOLO format from Roboflow website the images are already annotated and the data is being split in train, valid and test, I have added the Google drive link to access the dataset             and this is the reference from where i acquired the dataset = https://universe.roboflow.com/titulacin/person-detection-9a6mk/dataset/16. The Google drive links to dataset are available at the beginign of          README FILE.
+  ---
 
 2. Train Data :
    
@@ -61,6 +62,7 @@ Below you can see I have uplaoded a screenshot after training the dataset,  I ha
 
 ![person detetcion training](https://github.com/user-attachments/assets/d9e5a6aa-9396-4f6a-a586-22385acea2c5)
 
+---
 
 3. Code Logic explained :
 
