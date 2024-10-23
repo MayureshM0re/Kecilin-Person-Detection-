@@ -62,9 +62,13 @@ Below you can see I have uplaoded a screenshot after training the dataset,  I ha
 
 ![person detetcion training](https://github.com/user-attachments/assets/d9e5a6aa-9396-4f6a-a586-22385acea2c5)
 
+As you can mAP50 values is 0.818 which is 81.8% average precision which is good enough
+
 ---
 
 3. Code Logic explained :
+
+   The main code is present in 'main script.py' file please check mentioned above as well 
 
 
       
