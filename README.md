@@ -77,8 +77,9 @@ As you can mAP50 values is 0.818 which is 81.8% average precision which is good 
 
 
 3. Code Logic Walkthrough :
+ ---
    
-4. 
+   1)
       
 ![1st](https://github.com/user-attachments/assets/1357e534-67fc-4f2f-9d40-3c1e31dd66b2)
 
@@ -99,4 +100,47 @@ alert_threshold_people: Defines the number of people required to trigger the ale
 alert_threshold_time: The time in seconds that the condition (more than 3 people) needs to be true before an alert is raised (e.g., 60 seconds).
 alert_records: An empty list that will store the alert events for saving to a CSV file later.
 
+3) 
+
     
+![3rd](https://github.com/user-attachments/assets/97da4edb-4c5c-45f9-b0a1-bd8fa7045a5f)
+
+These variables handle the selection of the Region of Interest (ROI) and the logic for managing the alert:
+roi_selected: Becomes True once the user selects the region of interest.
+roi_coords: Stores the coordinates (top-left and bottom-right corners) of the selected ROI.
+start_point, end_point: Store the mouse click coordinates when selecting the ROI.
+alert_start_time: Tracks when the alert condition starts.
+alert_triggered: Tracks whether an alert is currently active or not
+
+4)
+
+
+![4rth](https://github.com/user-attachments/assets/ae16f43c-89ed-4ad3-8ac8-43f31c0addf0)
+
+This function allows the user to interact with the video window and select the ROI.
+The select_roi function is triggered by mouse events:
+cv2.EVENT_LBUTTONDOWN: When the left mouse button is clicked, it records the starting point of the ROI.
+cv2.EVENT_MOUSEMOVE: As the mouse moves, it continuously updates the rectangle being drawn.
+cv2.EVENT_LBUTTONUP: When the mouse button is released, it marks the end of the ROI selection, finalizing the coordinates.
+
+5) 
+
+
+![5th](https://github.com/user-attachments/assets/adfac4f6-0670-4bc0-ad51-0b046c05326e)
+
+The video input (file or webcam) is opened using cv2.VideoCapture().
+If it fails to open, an error message is printed, and the program exits.
+
+6)   
+
+![6th and 7 ](https://github.com/user-attachments/assets/a98bbb4c-e17b-4a43-900d-59096b551364)
+
+
+A window is created using OpenCV’s namedWindow, which allows resizing the window.
+The window is set to 1920x1080 resolution (adjustable).
+The select_roi function is bound to the window using cv2.setMouseCallback(), allowing the user to select the ROI with the mouse.
+
+The program enters the main loop, where each frame from the video or camera is processed.
+If a frame is successfully read, it proceeds; otherwise, the program prints a message and stops.
+
+7)
