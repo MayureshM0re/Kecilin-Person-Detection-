@@ -52,6 +52,19 @@ Instructions for the outputs :
 
 ![Screenshot (27)](https://github.com/user-attachments/assets/b47edb68-a385-4fe9-8ee6-2b3c165c5f02)
 
+
+names = names is the labelled data name
+nc = nc defines no.of classes to detect
+test, train and val contains images and annotation in .txt format (YOLO format)
+
+Below you can see I have uplaoded a screenshot after training the dataset,  I have to train on 50 epochs with 8 batch size and you can see it is getting trained on my laptops GPU NVIDIA 3050 TI 4gb
+
+![person detetcion training](https://github.com/user-attachments/assets/d9e5a6aa-9396-4f6a-a586-22385acea2c5)
+
+
+3. Code Logic explained :
+
+
       
 
       
