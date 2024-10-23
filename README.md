@@ -78,7 +78,7 @@ As you can mAP50 values is 0.818 which is 81.8% average precision which is good 
 
 3. Code Logic Walkthrough :
    
-   1) 
+4. 
       
 ![1st](https://github.com/user-attachments/assets/1357e534-67fc-4f2f-9d40-3c1e31dd66b2)
 
@@ -89,9 +89,14 @@ pandas for managing alert logs in CSV format.
 YOLO from the ultralytics library for loading the YOLOv8 model and performing person detection.
 The YOLO model is loaded using the provided path to best.pt
 
-      
-         
-      
+2)    
 
+
+![2nd](https://github.com/user-attachments/assets/3cb73480-0432-4898-8f3d-f848b70694d0)
+
+video_path: Specifies the input video file or 0 to use a webcam.
+alert_threshold_people: Defines the number of people required to trigger the alert (e.g., 3 in this case).
+alert_threshold_time: The time in seconds that the condition (more than 3 people) needs to be true before an alert is raised (e.g., 60 seconds).
+alert_records: An empty list that will store the alert events for saving to a CSV file later.
 
     
