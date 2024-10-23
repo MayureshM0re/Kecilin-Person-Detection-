@@ -55,7 +55,9 @@ Instructions for the outputs :
 
 
 names = names is the labelled data name
+
 nc = nc defines no.of classes to detect
+
 test, train and val contains images and annotation in .txt format (YOLO format)
 
 Below you can see I have uplaoded a screenshot after training the dataset,  I have to train on 50 epochs with 8 batch size and you can see it is getting trained on my laptops GPU NVIDIA 3050 TI 4gb
