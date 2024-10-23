@@ -41,10 +41,11 @@ Instructions for the outputs :
 
 ---
 
-#Collect Data: 
-
+1. Collect Data:
+   
       1) I acquired the data in YOLO format from Roboflow website the images are already annotated and the data is being split in train, valid and test, I have added the Google drive link to access the dataset             and this is the reference from where i acquired the dataset = https://universe.roboflow.com/titulacin/person-detection-9a6mk/dataset/16. The Google drive links to dataset are available at the beginign of          README FILE.
-      2) This dataset already had a data.yaml file so I have added that as well in Google drive link at the begining of README file 
+         
+      3) This dataset already had a data.yaml file so I have added that as well in Google drive link at the begining of README file 
 
 
     
