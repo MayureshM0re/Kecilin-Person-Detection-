@@ -75,12 +75,19 @@ As you can mAP50 values is 0.818 which is 81.8% average precision which is good 
 
 ---
 
-3. Code Logic explained :
 
-   The main code is present in 'main script.py' file please check mentioned above as well 
-
-
+3. Code Logic Walkthrough :
+   
+   1) 
       
+![1st](https://github.com/user-attachments/assets/1357e534-67fc-4f2f-9d40-3c1e31dd66b2)
+
+The necessary libraries are imported:
+cv2 (OpenCV) for handling video/image processing.
+time to handle time tracking.
+pandas for managing alert logs in CSV format.
+YOLO from the ultralytics library for loading the YOLOv8 model and performing person detection.
+The YOLO model is loaded using the provided path to best.pt
 
       
          
