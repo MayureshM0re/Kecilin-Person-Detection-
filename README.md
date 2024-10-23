@@ -8,10 +8,15 @@ I have trained the dataset using my laptops GPU and YOLOv8n NANO model is being 
 GPU specification : NVIDIA GeForce RTX 3050 Ti 4gb DDR6 
 
 Pre-requisites to run the code :
+
       1) VS Code 
+      
       2) Python version 3.10 ( minimum)
+      
       3) pip install ultralytics
+      
       4) pip install opencv-python
+      
       5) pip install pandas
       
 Optional Pre-requsites (if you wish to train the datasets on your GPU):
