@@ -111,6 +111,7 @@ alert_threshold_people: Defines the number of people required to trigger the ale
 alert_threshold_time: The time in seconds that the condition (more than 3 people) needs to be true before an alert is raised (e.g., 60 seconds).
 alert_records: An empty list that will store the alert events for saving to a CSV file later.
 
+
 3) 
 
     
@@ -122,6 +123,8 @@ roi_coords: Stores the coordinates (top-left and bottom-right corners) of the se
 start_point, end_point: Store the mouse click coordinates when selecting the ROI.
 alert_start_time: Tracks when the alert condition starts.
 alert_triggered: Tracks whether an alert is currently active or not
+
+
 
 4)
 
@@ -142,6 +145,7 @@ cv2.EVENT_LBUTTONUP: When the mouse button is released, it marks the end of the 
 The video input (file or webcam) is opened using cv2.VideoCapture().
 If it fails to open, an error message is printed, and the program exits.
 
+
 6)   
 
 ![6th and 7 ](https://github.com/user-attachments/assets/a98bbb4c-e17b-4a43-900d-59096b551364)
@@ -153,6 +157,8 @@ The select_roi function is bound to the window using cv2.setMouseCallback(), all
 
 The program enters the main loop, where each frame from the video or camera is processed.
 If a frame is successfully read, it proceeds; otherwise, the program prints a message and stops.
+
+
 
 7)
 
@@ -171,4 +177,22 @@ If the ROI has been selected, it retrieves the coordinates. It ensures that the 
 The last line counts how many people (class 0 in YOLO) are detected within the selected ROI by iterating over the detected boxes and checking if their coordinates fall within the ROI limits.
 
 
+
+
 8)
+
+
+
+![9](https://github.com/user-attachments/assets/1b625089-6b48-4897-b301-eb85e0df82cd)
+
+
+If the count of detected people meets or exceeds a predefined threshold (alert_threshold_people), it checks whether the alert timer (alert_start_time) has started.
+If the timer has started for longer than the specified duration (alert_threshold_time), it triggers an alert and logs the event with a timestamp.
+
+If the count drops below the threshold, it resets the alert timer and flag, preparing for future detections.
+
+The selected ROI is drawn in blue on the frame.
+If an alert is triggered, it displays a warning message in yellow; otherwise, it shows the current people count in white.
+
+If the alert condition (too many people detected for a sustained time) is met, a yellow alert message appears on the frame.
+If no alert condition is met, the current count of detected people is shown in white text on the frame.
