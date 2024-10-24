@@ -1,9 +1,11 @@
-Hello, please follow the below instructions to run my code. Thank you!
+Hello, please kindly read all the instructions. Thank you!
 
-I have trained the dataset using my laptops GPU and YOLOv8n NANO model is being used
+I have trained the dataset using my laptop GPU and YOLOv8n NANO model is being used
 GPU specification: NVIDIA GeForce RTX 3050 Ti 4gb DDR6 .
 
 The input video I have used is in loop originally it was 11 seconds I have made a loop of to achieve the target of recording more than 2 minutes.
+
+NOTE : I have recorded the output/demo video using OBS Studio, as the VideoCapture function of OpenCv was causing too much of lag and FPS drop in demo output.
 
 Pre-requisites to run the code :
 
