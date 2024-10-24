@@ -155,3 +155,20 @@ The program enters the main loop, where each frame from the video or camera is p
 If a frame is successfully read, it proceeds; otherwise, the program prints a message and stops.
 
 7)
+
+![8](https://github.com/user-attachments/assets/7d1bb8d9-f6aa-4c9a-a79c-e72adbc7529c)
+
+
+The first line in the above screenshot runs the YOLOv8 model on the current video frame, detecting objects (people in this case) within that frame. The results are stored in the results variable.
+
+This loop iterates through the detected bounding boxes from the YOLO results. Each bounding box consists of coordinates (x1, y1, x2, y2), confidence score (conf), and class label (cls).
+It draws rectangles around detected people with a green outline and adds text indicating the confidence score above the bounding box.
+
+If the ROI has not been selected yet (roi_selected is False), it draws a rectangle on the frame to indicate the area being selected by the user. The rectangle is drawn in blue.
+
+If the ROI has been selected, it retrieves the coordinates. It ensures that the coordinates form a valid rectangle (i.e., x1 < x2 and y1 < y2).
+
+The last line counts how many people (class 0 in YOLO) are detected within the selected ROI by iterating over the detected boxes and checking if their coordinates fall within the ROI limits.
+
+
+8)
