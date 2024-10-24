@@ -148,6 +148,7 @@ If it fails to open, an error message is printed, and the program exits.
 
 6)   
 
+
 ![6th and 7 ](https://github.com/user-attachments/assets/a98bbb4c-e17b-4a43-900d-59096b551364)
 
 
@@ -162,7 +163,9 @@ If a frame is successfully read, it proceeds; otherwise, the program prints a me
 
 7)
 
+
 ![8](https://github.com/user-attachments/assets/7d1bb8d9-f6aa-4c9a-a79c-e72adbc7529c)
+
 
 
 The first line in the above screenshot runs the YOLOv8 model on the current video frame, detecting objects (people in this case) within that frame. The results are stored in the results variable.
@@ -196,3 +199,22 @@ If an alert is triggered, it displays a warning message in yellow; otherwise, it
 
 If the alert condition (too many people detected for a sustained time) is met, a yellow alert message appears on the frame.
 If no alert condition is met, the current count of detected people is shown in white text on the frame.
+
+
+
+
+
+9)
+
+
+
+![10](https://github.com/user-attachments/assets/47dbfe0a-290d-4025-a4c6-6bf6f4bc9209)
+
+
+
+The processed frame is displayed in a window named "Video".
+If the user presses the 'q' key, the loop breaks, allowing the program to exit.
+
+After the detection loop, if there were any alerts triggered, they are saved to a CSV file named alerts.csv using pandas.
+
+Finally, the video capture object is released, and all OpenCV windows are closed to free up resources.
