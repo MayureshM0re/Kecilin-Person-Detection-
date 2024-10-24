@@ -26,9 +26,19 @@ Optional Pre-requsites (if you wish to train the datasets on your GPU):
 
 
 Google Drive Links to dataset for training, video for script and video output (demo) :
-      1) Dataset = https://drive.google.com/drive/folders/1YadKIxFp-HEukfQOGu9ZfCsw4raF0OUV?usp=drive_link 
-      2) Original Video = https://drive.google.com/file/d/14ksZTSkY801unbWeGry3pcYyoC52XRZm/view?usp=drive_link
-      3) Video demo/output = https://drive.google.com/file/d/1C8Yw3Njfe3vu3YJQ-bdHyapySHEeMF34/view?usp=drive_link
+
+      1) Dataset = 
+      
+https://drive.google.com/drive/folders/1YadKIxFp-HEukfQOGu9ZfCsw4raF0OUV?usp=drive_link
+      
+      2) Original Video = 
+      
+https://drive.google.com/file/d/14ksZTSkY801unbWeGry3pcYyoC52XRZm/view?usp=drive_link
+      
+      3) Video demo/output =
+       
+https://drive.google.com/file/d/1C8Yw3Njfe3vu3YJQ-bdHyapySHEeMF34/view?usp=drive_link
+
 ---
 
 Instructions to run my code :
