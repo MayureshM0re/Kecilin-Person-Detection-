@@ -61,7 +61,7 @@ Instructions to run my code :
 
 ---
 
-### 1. Collect Data:
+# 1. Collect Data:
 
 ---
 
