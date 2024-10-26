@@ -1,9 +1,9 @@
 Hello, please kindly read all the instructions. Thank you!
 
 I have trained the dataset using my laptop GPU and YOLOv8n NANO model is being used
-GPU specification: NVIDIA GeForce RTX 3050 Ti 4gb DDR6 .
+GPU specification: NVIDIA GeForce RTX 3050 Ti 4gb DDR6.
 
-The input video I have used is in loop originally it was 11 seconds I have made a loop of to achieve the target of recording more than 2 minutes.
+The input video I have used is in a loop originally it was 11 seconds I have made a loop of to achieve the target of recording more than 2 minutes.
 
 
 Pre-requisites to run the code :
@@ -95,131 +95,83 @@ As you can mAP50 values is 0.818 which is 81.8% average precision which is good 
 # Code Logic Walkthrough :
  ---
    
-   1)
-      
-![1st](https://github.com/user-attachments/assets/1357e534-67fc-4f2f-9d40-3c1e31dd66b2)
+## 1)
+   
+   ![1](https://github.com/user-attachments/assets/0fe622f2-b4f4-4d58-b772-7e0def883fc8)
+
 
 The necessary libraries are imported:
-cv2 (OpenCV) for handling video/image processing.
-time to handle time tracking.
-pandas for managing alert logs in CSV format.
-YOLO from the ultralytics library for loading the YOLOv8 model and performing person detection.
-The YOLO model is loaded using the provided path to best.pt
+cv2: Provides OpenCV functions for computer vision tasks.
+numpy: Used here for numerical operations.
+YOLO (from ultralytics): Loads the YOLO model for person detection.
+time, datetime: Used for timing and timestamping events.
+csv, os: Handle logging of detections and file operations.
 
-2)    
+threshold_count: The minimum number of detected people required to trigger an alert.
+threshold_time: Time in seconds that this threshold must be met for an alert.
+roi_rectangle: Stores coordinates of the Region of Interest (ROI) drawn by the user.
+alert_active: Keeps track if an alert is currently active.
+The YOLO model is loaded using self.model = YOLO(MODEL_PATH).
 
+a CSV file with a unique timestamped filename to log alerts. It initializes the file with headers: 'Timestamp', 'People Count In ROI', 'Alert Type'.
 
-![2nd](https://github.com/user-attachments/assets/3cb73480-0432-4898-8f3d-f848b70694d0)
+---
 
-video_path: Specifies the input video file or 0 to use a webcam.
-alert_threshold_people: Defines the number of people required to trigger the alert (e.g., 3 in this case).
-alert_threshold_time: The time in seconds that the condition (more than 3 people) needs to be true before an alert is raised (e.g., 60 seconds).
-alert_records: An empty list that will store the alert events for saving to a CSV file later.
+## 2)    
 
+![2](https://github.com/user-attachments/assets/190f8195-7719-489d-a340-13a1a403d461)
 
-3) 
+This method enables the user to draw a rectangular ROI by clicking and dragging with the mouse on the video frame:
 
-    
-![3rd](https://github.com/user-attachments/assets/97da4edb-4c5c-45f9-b0a1-bd8fa7045a5f)
+EVENT_LBUTTONDOWN: Begins the drawing, setting roi_start and roi_end to the initial click position.
+EVENT_MOUSEMOVE: Updates roi_end as the mouse is dragged.
+EVENT_LBUTTONUP: Ends the drawing and calculates the bounding box coordinates (roi_rectangle).
 
-These variables handle the selection of the Region of Interest (ROI) and the logic for managing the alert:
-roi_selected: Becomes True once the user selects the region of interest.
-roi_coords: Stores the coordinates (top-left and bottom-right corners) of the selected ROI.
-start_point, end_point: Store the mouse click coordinates when selecting the ROI.
-alert_start_time: Tracks when the alert condition starts.
-alert_triggered: Tracks whether an alert is currently active or not
+The mouse_callback function is used to allow users to draw a ROI rectangle on the frame.
+The c key confirms the selection, and the r key resets the drawing process.
 
-
-
-4)
+---
 
 
-![4rth](https://github.com/user-attachments/assets/ae16f43c-89ed-4ad3-8ac8-43f31c0addf0)
+## 3) 
 
-This function allows the user to interact with the video window and select the ROI.
-The select_roi function is triggered by mouse events:
-cv2.EVENT_LBUTTONDOWN: When the left mouse button is clicked, it records the starting point of the ROI.
-cv2.EVENT_MOUSEMOVE: As the mouse moves, it continuously updates the rectangle being drawn.
-cv2.EVENT_LBUTTONUP: When the mouse button is released, it marks the end of the ROI selection, finalizing the coordinates.
+![3](https://github.com/user-attachments/assets/4708d7fe-d18f-41c5-b67f-eb9ec1e9ff41)
 
-5) 
+if a person detected in a bounding box (bbox) is within the ROI. The bounding box’s center coordinates are compared with the ROI boundaries.
 
+def log_alert appends a new entry to the CSV file with the current timestamp, count of people in the ROI, and the alert type (WARNING, ALERT, RESOLVED).
 
-![5th](https://github.com/user-attachments/assets/adfac4f6-0670-4bc0-ad51-0b046c05326e)
+def process_frame
+This function processes each frame to:
 
-The video input (file or webcam) is opened using cv2.VideoCapture().
-If it fails to open, an error message is printed, and the program exits.
+Draw the ROI rectangle.
+Run YOLO detection (results = self.model(frame, half=True)[0]) and process detections.
 
-
-6)   
+---
 
 
-![6th and 7 ](https://github.com/user-attachments/assets/a98bbb4c-e17b-4a43-900d-59096b551364)
+## 4)
 
+![4](https://github.com/user-attachments/assets/5d20c31d-a818-4345-84e9-2f978ac349bb)
 
-A window is created using OpenCV’s namedWindow, which allows resizing the window.
-The window is set to 1920x1080 resolution (adjustable).
-The select_roi function is bound to the window using cv2.setMouseCallback(), allowing the user to select the ROI with the mouse.
+This part iterates through each detection, filtering only those classified as persons with high confidence (above 0.3). If the detected person is within the ROI, people_count_roi is incremented.
 
-The program enters the main loop, where each frame from the video or camera is processed.
-If a frame is successfully read, it proceeds; otherwise, the program prints a message and stops.
+If the count of people in the ROI exceeds the threshold, a warning is logged. If this count persists beyond threshold_time, an alert is activated and logged.
 
+---
 
+## 5) 
 
-7)
+![5](https://github.com/user-attachments/assets/ed648c0e-70ef-4d3a-8407-8978445db83c)
 
+This is the main loop that:
 
-![8](https://github.com/user-attachments/assets/7d1bb8d9-f6aa-4c9a-a79c-e72adbc7529c)
-
-
-
-The first line in the above screenshot runs the YOLOv8 model on the current video frame, detecting objects (people in this case) within that frame. The results are stored in the results variable.
-
-This loop iterates through the detected bounding boxes from the YOLO results. Each bounding box consists of coordinates (x1, y1, x2, y2), confidence score (conf), and class label (cls).
-It draws rectangles around detected people with a green outline and adds text indicating the confidence score above the bounding box.
-
-If the ROI has not been selected yet (roi_selected is False), it draws a rectangle on the frame to indicate the area being selected by the user. The rectangle is drawn in blue.
-
-If the ROI has been selected, it retrieves the coordinates. It ensures that the coordinates form a valid rectangle (i.e., x1 < x2 and y1 < y2).
-
-The last line counts how many people (class 0 in YOLO) are detected within the selected ROI by iterating over the detected boxes and checking if their coordinates fall within the ROI limits.
-
-
-
-
-8)
-
-
-
-![9](https://github.com/user-attachments/assets/1b625089-6b48-4897-b301-eb85e0df82cd)
-
-
-If the count of detected people meets or exceeds a predefined threshold (alert_threshold_people), it checks whether the alert timer (alert_start_time) has started.
-If the timer has started for longer than the specified duration (alert_threshold_time), it triggers an alert and logs the event with a timestamp.
-
-If the count drops below the threshold, it resets the alert timer and flag, preparing for future detections.
-
-The selected ROI is drawn in blue on the frame.
-If an alert is triggered, it displays a warning message in yellow; otherwise, it shows the current people count in white.
-
-If the alert condition (too many people detected for a sustained time) is met, a yellow alert message appears on the frame.
-If no alert condition is met, the current count of detected people is shown in white text on the frame.
+Opens the video and reads properties.
+Instantiates PeopleCounter.
+Reads each frame and processes it to detect and annotate people, while writing the output to an MP4 file.
 
 
 
 
 
-9)
 
-
-
-![10](https://github.com/user-attachments/assets/47dbfe0a-290d-4025-a4c6-6bf6f4bc9209)
-
-
-
-The processed frame is displayed in a window named "Video".
-If the user presses the 'q' key, the loop breaks, allowing the program to exit.
-
-After the detection loop, if there were any alerts triggered, they are saved to a CSV file named alerts.csv using pandas.
-
-Finally, the video capture object is released, and all OpenCV windows are closed to free up resources.
