@@ -152,7 +152,8 @@ Run YOLO detection (results = self.model(frame, half=True)[0]) and process detec
 
 ## 4)
 
-![4](https://github.com/user-attachments/assets/5d20c31d-a818-4345-84e9-2f978ac349bb)
+![4](https://github.com/user-attachments/assets/9258f509-9835-44d5-a345-73930f7242a3)
+
 
 This part iterates through each detection, filtering only those classified as persons with high confidence (above 0.3). If the detected person is within the ROI, people_count_roi is incremented.
 
