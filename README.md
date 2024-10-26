@@ -27,27 +27,21 @@ Optional Pre-requsites (if you wish to train the datasets on your GPU):
 
 
 
-Google Drive Links to dataset for training, video for script and video output (demo) :
+### Google Drive Links to Output Video, Original Video and Dataset :
 
-      1) Dataset = 
+## 1) Output Video = 
       
-https://drive.google.com/drive/folders/1YadKIxFp-HEukfQOGu9ZfCsw4raF0OUV?usp=drive_link
+https://drive.google.com/file/d/1y8_R-pkyOK2CC2zHkzABeQcZqpPWuKBj/view?usp=sharing
       
-      2) Original Video = 
+## 2) Original Video = 
       
 https://drive.google.com/file/d/14ksZTSkY801unbWeGry3pcYyoC52XRZm/view?usp=drive_link
       
-      3) Video demo/output =
+## 3) Dataset =
        
-https://drive.google.com/file/d/1C8Yw3Njfe3vu3YJQ-bdHyapySHEeMF34/view?usp=drive_link
+https://drive.google.com/drive/folders/1ryPoPAExnU47_p5yQhY9qIsxEpRB_bfv?usp=sharing
 
 ---
-
-Instructions to run my code :
-
-      1) training.py = it is the code to train the YOLOv8n model
-      
-      2) main script.py = it is the main code to detect persons in a video frame and to select an region of interest (ROI) and send an alert message if the certain number of peopel continously stay in that ROI for more than x amoutn of minutes. 
 
 Instructions for the outputs :
 
@@ -55,16 +49,24 @@ Instructions for the outputs :
       
       2) alerts.csv = it is a CSV file it contains the real world time of detection and an alert message
       
-      3) best.pt = the best.pt is the trained model 
+      3) best.pt = the best.pt is the trained model
+
+
+Instructions to run my code :
+
+      1) training.py = it is the code to train the YOLOv8n model
+      
+      2) main script.py = it is the main code to detect persons in a video frame and to select an region of interest (ROI) and send an alert message if the certain number of peopel continously stay in that ROI for more than x amoutn of minutes. 
+
 
 ---
 
-1. Collect Data:
+### 1. Collect Data:
    
       1) I acquired the data in YOLO format from Roboflow website the images are already annotated and the data is being split in train, valid and test, I have added the Google drive link to access the dataset             and this is the reference from where i acquired the dataset = https://universe.roboflow.com/titulacin/person-detection-9a6mk/dataset/16. The Google drive links to dataset are available at the beginign of          README FILE.
   ---
 
-2. Train Data :
+### 2. Train Data :
    
      1) To train the data we need to create a data.yaml file, since it was already present with dataset from Roboflow website i didnt need to write data.yaml file 
 
@@ -87,7 +89,7 @@ As you can mAP50 values is 0.818 which is 81.8% average precision which is good 
 ---
 
 
-3. Code Logic Walkthrough :
+### Code Logic Walkthrough :
  ---
    
    1)
