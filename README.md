@@ -5,6 +5,8 @@ GPU specification: NVIDIA GeForce RTX 3050 Ti 4gb DDR6.
 
 The input video I have used is in a loop originally it was 11 seconds I have made a loop of to achieve the target of recording more than 2 minutes.
 
+In the Output Video, the Green box is the ROI  - region of interest, Red boundng boxes are for those persons who are getting detetced inside the ROI, Blue bounding boxes are for person outside the ROI.
+
 
 Pre-requisites to run the code :
 
